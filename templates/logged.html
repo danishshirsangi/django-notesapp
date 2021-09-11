@@ -24,8 +24,28 @@
           </div>
         </div>
       </nav>
-      <div class="container">
-          <h4>{{user.username}}</h4>
+      <!---Main -->
+      <div class="card text-center m-4">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'semone'%}">Sem 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'semtwo'%}">Sem 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'semthree'%}">Sem 3</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'semfour'%}">Sem 4</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          {% block content %}
+          {% endblock %}
+        </div>
       </div>
 </body>
 </html>

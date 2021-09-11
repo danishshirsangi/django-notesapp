@@ -4,9 +4,13 @@
 
 {% if user.is_authenticated %}
 <div class="card m-4">
-  <div class="card-body mx-auto">
-    <h3>Hello <span class="text-primary">{{user.username}}</span> You are already a Registered user</h3>
-    <a href="{% url 'logged'%}" class="btn btn-primary my-2">Go to Download Page </a>
+  <div class="card-header">
+    Registered
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Hello <span class="text-primary">{{user.username}}</span></h5>
+    <p class="card-text">You are already registerd user.</p>
+    <a href="{% url 'logged'%}" class="btn btn-primary">Go to download page</a>
   </div>
 </div>
 {% else %}
