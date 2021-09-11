@@ -1,4 +1,38 @@
 {% extends 'logged.html'%}
 {% block content %}
-Semester 2
+<h4 class="text-center text-primary p-2 border">SEM 2</h4>
+
+<form action="" method="POST" class="d-flex mx-auto w-25">
+  {% csrf_token %}
+  <select name="optionname" class="form-select mx-2" id="">
+    {% for n in notes%}
+    <option value="{{n}}">{{n}}</option>
+    {%endfor%}
+  </select>
+  <button type="submit" class="btn btn-primary mx-2">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">SR.NO</th>
+        <th scope="col">SUBJECT</th>
+        <th scope="col">MODULE</th>
+        <th scope="col">DOWNLOAD</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if notes%}
+        {% for note in notes%}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{note.select_sub}}</td>
+          <td>{{note.module_name}}</td>
+          <td><a href="">Download</a></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </tbody>
+  </table>
+
 {% endblock %}

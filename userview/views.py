@@ -1,9 +1,13 @@
+from os import name
 from django.contrib import messages
+from django.db.models.expressions import Value
+from django.forms.widgets import ChoiceWidget
 from django.http import request
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from .models import semFour,semThree,semOne,semTwo
 # Create your views here.
 
 def home(request):
@@ -51,16 +55,37 @@ def logout_view(request):
 
 @login_required(login_url='/login/')
 def semone_view(request):
-    return render(request, 'semnotes/sem1.html')
+    if request.method == "POST":
+        selected_option = request.POST["optionname"]
+        notes = semOne.objects.filter(select_sub=selected_option)
+    else:
+        notes = semOne.objects.all()
+    return render(request, 'semnotes/sem1.html',{'notes':notes})
 
 @login_required(login_url='/login/')
 def semtwo_view(request):
-    return render(request, 'semnotes/sem2.html')
+    if request.method == "POST":
+        selected_option = request.POST["optionname"]
+        notes = semTwo.objects.filter(select_sub=selected_option)
+    else:
+        notes = semTwo.objects.all()
+    return render(request, 'semnotes/sem2.html',{'notes':notes})
+        
 
 @login_required(login_url='/login/')
 def semthree_view(request):
-    return render(request, 'semnotes/sem3.html')
+    if request.method == "POST":
+        selected_option = request.POST["optionname"]
+        notes = semThree.objects.filter(select_sub=selected_option)
+    else:
+        notes = semThree.objects.all()
+    return render(request, 'semnotes/sem3.html',{'notes':notes})
 
 @login_required(login_url='/login/')
 def semfour_view(request):
-    return render(request, 'semnotes/sem4.html')
+    if request.method == "POST":
+        selected_option = request.POST["optionname"]
+        notes = semFour.objects.filter(select_sub=selected_option)
+    else:
+        notes = semFour.objects.all()
+    return render(request, 'semnotes/sem4.html',{'notes':notes})
