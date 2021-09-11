@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+  <div class="card m-4">
+    <div class="card-body mx-auto">
+      <h3>Hello <span class="text-primary">{{user.username}}</span> You are already Logged in
+         can download notes now</h3>
+      <a href="{% url 'logged'%}" class="btn btn-primary my-2">Go to Download Page </a>
+    </div>
+  </div>
+{% else %}
+
+<form class="w-75 m-auto" style="max-width: 300px;" method="POST">
+  {% csrf_token %}
+  <p class="text-center text-primary display-4 my-4">Log In</p>
+  <div class="mb-3">
+    <input type="text" class="form-control" name="username" placeholder="Username" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <input type="password" class="form-control" name="password" placeholder="Password" id="exampleInputPassword1">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endif %}
+
+{% for message in messages %}
+<p class="text-center text-danger my-2">{{message}}</p>
+{% endfor %}
+{% endblock %}
