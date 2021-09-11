@@ -42,9 +42,25 @@ def register_view(request):
 
 @login_required(login_url='/login/')
 def logged_view(request):
-    return render(request, 'logged.html')
+    return redirect('semone')
 
-
+@login_required(login_url='/login/')
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+@login_required(login_url='/login/')
+def semone_view(request):
+    return render(request, 'semnotes/sem1.html')
+
+@login_required(login_url='/login/')
+def semtwo_view(request):
+    return render(request, 'semnotes/sem2.html')
+
+@login_required(login_url='/login/')
+def semthree_view(request):
+    return render(request, 'semnotes/sem3.html')
+
+@login_required(login_url='/login/')
+def semfour_view(request):
+    return render(request, 'semnotes/sem4.html')
