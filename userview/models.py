@@ -22,6 +22,7 @@ class semOne(models.Model):
         default=SUB1,
     )
     module_name = models.IntegerField()
+    pdf_module = models.FileField(upload_to='media/sem1',null=True)
     def __str__(self):
         return self.select_sub
 
@@ -46,6 +47,7 @@ class semTwo(models.Model):
         default=SUB1,
     )
     module_name = models.IntegerField()
+    pdf_module = models.FileField(upload_to='media/sem2',null=True)
     def __str__(self):
         return self.select_sub
 
@@ -70,6 +72,7 @@ class semThree(models.Model):
         default=SUB1,
     )
     module_name = models.IntegerField()
+    pdf_module = models.FileField(upload_to='media/sem3',null=True)
     def __str__(self):
         return self.select_sub
 
@@ -94,6 +97,7 @@ class semFour(models.Model):
         default=SUB1,
     )
     module_name = models.IntegerField()
+    pdf_module = models.FileField(upload_to='media/sem4',null=True)
     def __str__(self):
         return self.select_sub
 

@@ -31,7 +31,11 @@
             <th scope="row">{{forloop.counter}}</th>
             <td>{{note.select_sub}}</td>
             <td>{{note.module_name}}</td>
-            <td><a href="">Download</a></td>
+            {% if note.pdf_module %}
+            <td><a href="" download="{{note.pdf_module}}">Download</a></td>
+            {% else %}
+            <td>Not Availible</td>
+            {% endif %}
           </tr>
         {% endfor %}
        {% endif %}

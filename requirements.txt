@@ -1,0 +1,3 @@
+djagno
+pillow
+django-cleanup
