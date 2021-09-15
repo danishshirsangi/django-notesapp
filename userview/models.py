@@ -22,7 +22,7 @@ class semOne(models.Model):
         default=SUB1,
     )
     module_name = models.IntegerField()
-    pdf_module = models.FileField(upload_to='media/sem1',null=True)
+    pdf_module = models.FileField(upload_to='media/sem1',null=False)
     def __str__(self):
         return self.select_sub
 

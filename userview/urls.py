@@ -1,3 +1,4 @@
+from os import name
 from django.urls import path
 from . import views
 
@@ -11,4 +12,6 @@ urlpatterns = [
     path('semtwo/',views.semtwo_view,name="semtwo"),
     path('semthree/',views.semthree_view,name="semthree"),
     path('semfour/',views.semfour_view,name="semfour"),
+
+    path('admincontrol/',views.admin_view,name="adminview")
 ]

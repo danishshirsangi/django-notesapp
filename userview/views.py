@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import semFour,semThree,semOne,semTwo
+from django.core.files.storage import FileSystemStorage
+from .forms import semoneControl
 # Create your views here.
 
 def home(request):
@@ -89,3 +91,12 @@ def semfour_view(request):
     else:
         notes = semFour.objects.all()
     return render(request, 'semnotes/sem4.html',{'notes':notes})
+
+@login_required(login_url='/login/')
+def admin_view(request):
+    form = semoneControl(request.POST, request.FILES)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+    return render(request, 'admin/admin.html',{'form':form})
