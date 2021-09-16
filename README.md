@@ -8,4 +8,3 @@ Features
 4. Admin can handle all the feattures like adding/updating/deleting the notes/users and can have overall control.
 5. sqlite3 database
 
-Some other features are under processing.😜
