@@ -11,13 +11,49 @@
 <body>
     {% if user.is_staff == True %}
     <h1 class="text-primary text-center my-4">You are Staff member</h1>
-    <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{form.as_p}}
-            <center>
-                <input type="submit" class="btn btn-primary my-2" value="Submit">
-            </center>
+
+    <form method="post">
+        {% csrf_token %}
+        <select name="semoption" class="form-select mx-auto w-25">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+       <center>
+        <button class="btn btn-primary my-2">Search</button>
+       </center>
+    </form>
+
+    {% if form is None%}
+
+        <h2 class="text-danger text-center my-2">*Choose a semester to continue</h2>
+
+    {% else %}
+
+        <form action="" method="post" class="mx-4">
+        <div class="card m-4">
+            <div class="card-body">
+                <h2 class="text-primary my-2 text-center">
+                    Sem
+                </h2>
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form}}
+                    <center>
+                        <input type="submit" class="btn btn-primary my-2" value="Submit">
+                    </center>
+                </form>
+            </div>
+        </div>
         </form>
+
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+
+    {% endif %}
+
     {% else %}
         You are not permitted 
     {% endif %}

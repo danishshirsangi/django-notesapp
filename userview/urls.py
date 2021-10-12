@@ -13,5 +13,5 @@ urlpatterns = [
     path('semthree/',views.semthree_view,name="semthree"),
     path('semfour/',views.semfour_view,name="semfour"),
 
-    path('admincontrol/',views.admin_view,name="adminview")
+    path('admincontrol/',views.admin_view,name="adminview"),
 ]

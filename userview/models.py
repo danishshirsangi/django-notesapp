@@ -18,11 +18,10 @@ class semOne(models.Model):
     ]
     select_sub = models.CharField(
         max_length=100,
-        choices=WHICH_YEAR,
-        default=SUB1,
+        choices=WHICH_YEAR
     )
     module_name = models.IntegerField()
-    pdf_module = models.FileField(upload_to='media/sem1',null=False)
+    pdf_module = models.FileField(upload_to='sem1media',null=True)
     def __str__(self):
         return self.select_sub
 
@@ -43,11 +42,10 @@ class semTwo(models.Model):
     ]
     select_sub = models.CharField(
         max_length=100,
-        choices=WHICH_YEAR,
-        default=SUB1,
+        choices=WHICH_YEAR
     )
     module_name = models.IntegerField()
-    pdf_module = models.FileField(upload_to='media/sem2',null=True)
+    pdf_module = models.FileField(upload_to='sem2media',null=True)
     def __str__(self):
         return self.select_sub
 
@@ -68,11 +66,10 @@ class semThree(models.Model):
     ]
     select_sub = models.CharField(
         max_length=100,
-        choices=WHICH_YEAR,
-        default=SUB1,
+        choices=WHICH_YEAR
     )
     module_name = models.IntegerField()
-    pdf_module = models.FileField(upload_to='media/sem3',null=True)
+    pdf_module = models.FileField(upload_to='sem3media',null=True)
     def __str__(self):
         return self.select_sub
 
@@ -94,10 +91,9 @@ class semFour(models.Model):
     select_sub = models.CharField(
         max_length=100,
         choices=WHICH_YEAR,
-        default=SUB1,
     )
     module_name = models.IntegerField()
-    pdf_module = models.FileField(upload_to='media/sem4',null=True)
+    pdf_module = models.FileField(upload_to='sem4media',null=True)
     def __str__(self):
         return self.select_sub
 

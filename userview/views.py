@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import semFour,semThree,semOne,semTwo
 from django.core.files.storage import FileSystemStorage
-from .forms import semoneControl
+from .forms import semfourControl, semoneControl, semthreeControl, semtwoControl
 # Create your views here.
 
 def home(request):
@@ -94,9 +94,27 @@ def semfour_view(request):
 
 @login_required(login_url='/login/')
 def admin_view(request):
-    form = semoneControl(request.POST, request.FILES)
+    form1 = semoneControl(request.POST, request.FILES)
+    form2 = semtwoControl(request.POST, request.FILES)
+    form3 = semthreeControl(request.POST, request.FILES)
+    form4 = semfourControl(request.POST, request.FILES)
+
+    context = {}
 
     if request.method == "POST":
-        if form.is_valid():
-            form.save()
-    return render(request, 'admin/admin.html',{'form':form})
+        optionsem = request.POST.get('semoption')
+        if optionsem == "1":
+            context['form'] = form1
+        elif optionsem == "2":
+            context['form'] = form2
+        elif optionsem == "3":
+            context['form'] = form3
+        else:
+            context['form'] = form4
+
+    if request.method == "POST":
+        if context is not None:
+            pass
+        else:
+            messages.info(request,'Fields Cannot be empty')
+    return render(request, 'admin/admin.html',context)
