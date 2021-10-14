@@ -100,21 +100,30 @@ def admin_view(request):
     form4 = semfourControl(request.POST, request.FILES)
 
     context = {}
+    
+    optionsem = None
 
     if request.method == "POST":
         optionsem = request.POST.get('semoption')
-        if optionsem == "1":
-            context['form'] = form1
-        elif optionsem == "2":
-            context['form'] = form2
-        elif optionsem == "3":
-            context['form'] = form3
-        else:
-            context['form'] = form4
+        context['sem'] = optionsem
+    if optionsem == "one":
+        context['form'] = form1
+    elif optionsem == "two":
+        context['form'] = form2
+    elif optionsem == "three":
+        context['form'] = form3
+    elif optionsem == "four":
+        context['form'] = form4
+    else:
+        context['form'] = form1        
+    
 
     if request.method == "POST":
         if context is not None:
-            pass
+            if context['form'].is_valid():
+                context['form'].save()
+                return redirect(('/'))
         else:
             messages.info(request,'Fields Cannot be empty')
+        
     return render(request, 'admin/admin.html',context)

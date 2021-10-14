@@ -11,19 +11,21 @@
 <body>
     {% if user.is_staff == True %}
     <h1 class="text-primary text-center my-4">You are Staff member</h1>
+    
 
     <form method="post">
         {% csrf_token %}
         <select name="semoption" class="form-select mx-auto w-25">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+            <option value="one">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+            <option value="four">4</option>
         </select>
        <center>
         <button class="btn btn-primary my-2">Search</button>
        </center>
     </form>
+
 
     {% if form is None%}
 
@@ -31,31 +33,34 @@
 
     {% else %}
 
-        <form action="" method="post" class="mx-4">
-        <div class="card m-4">
-            <div class="card-body">
-                <h2 class="text-primary my-2 text-center">
-                    Sem
-                </h2>
-                <form action="" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{form}}
-                    <center>
-                        <input type="submit" class="btn btn-primary my-2" value="Submit">
-                    </center>
-                </form>
+            
+            <div class="card m-4">
+                <div class="card-body">
+                    <h2 class="text-primary my-2 text-center">
+                        Sem {{sem|capfirst}}
+                    </h2>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form}}
+                        <center>
+                            <input type="submit" class="btn btn-primary my-2" value="Submit">
+                        </center>
+                    </form>
+                </div>
             </div>
-        </div>
-        </form>
+
 
         {% for message in messages %}
-            {{message}}
+            <h1 class="text-center text-primary my-2">{{message}}</h1>
         {% endfor %}
 
     {% endif %}
 
     {% else %}
-        You are not permitted 
+        <h1 class="text-center text-primary my-4 p-2">You Do not have Permission to access this page</h1>
+        <center>
+            <a href="{% url 'login'%}" class="btn btn-primary mx-auto my-2">Home Page</a>
+        </center>
     {% endif %}
 </body>
 </html>
