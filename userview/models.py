@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import CharField, DateField
 
 # Create your models here.
 class semOne(models.Model):
@@ -98,4 +99,10 @@ class semFour(models.Model):
     def __str__(self):
         return self.select_sub
 
+class notificationsLive(models.Model):
+    title = CharField(max_length=250)
+    dt = DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
 

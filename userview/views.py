@@ -7,13 +7,14 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import semFour,semThree,semOne,semTwo
+from .models import semFour,semThree,semOne,semTwo,notificationsLive
 from django.core.files.storage import FileSystemStorage
 from .forms import semfourControl, semoneControl, semthreeControl, semtwoControl
 # Create your views here.
 
 def home(request):
-    return render(request, 'base.html')
+    notifications = notificationsLive.objects.all()
+    return render(request, 'base.html',{'notification':notifications})
 
 def login_view(request):
      if request.method == "POST":
@@ -102,7 +103,7 @@ def admin_view(request):
     context = {}
     
     optionsem = None
-
+    
     if request.method == "POST":
         optionsem = request.POST.get('semoption')
         context['sem'] = optionsem
