@@ -22,7 +22,7 @@ class semOne(models.Model):
         choices=SEM1_YEAR
     )
     module_name = models.IntegerField()
-    pdf_module = models.FileField(upload_to='sem1media',null=True)
+    pdf_module = models.FileField(null=True)
     def __str__(self):
         return self.select_sub
 
@@ -46,7 +46,7 @@ class semTwo(models.Model):
         choices=SEM2_YEAR
     )
     module_name = models.IntegerField()
-    pdf_module = models.FileField(upload_to='sem2media',null=True)
+    pdf_module = models.FileField(null=True)
     def __str__(self):
         return self.select_sub
 
@@ -70,7 +70,7 @@ class semThree(models.Model):
         choices=SEM3_YEAR
     )
     module_name = models.IntegerField()
-    pdf_module = models.FileField(upload_to='sem3media',null=True)
+    pdf_module = models.FileField(null=True)
     def __str__(self):
         return self.select_sub
 
@@ -94,7 +94,7 @@ class semFour(models.Model):
         choices=SEM4_YEAR,
     )
     module_name = models.IntegerField()
-    pdf_module = models.FileField(upload_to='sem4media',null=True)
+    pdf_module = models.FileField(null=True)
 
     def __str__(self):
         return self.select_sub
