@@ -17,14 +17,14 @@ Give It 🌟 if u find it useful.
 
 How to Run this project?
 
-Set up and run virtual environtment before running project
+## Virtualenv Setup
 &nbsp;
 &nbsp;
 1.    <code>python -m install virtualenv</code> or <code>pip install virtualenv</code> 
 2.    <code>virtualenv (environment_name)</code>
 3.    <code>environment_name\Scripts\activate</code>
 
-Now coming to project
+## Run Project
 
 1.  <code>First Locate to project folder in cmd with virtual environment running</code>
 2.  <code>pip install -r requirements.txt</code>
