@@ -26,13 +26,13 @@
     </thead>
     <tbody>
        {% if notes %}
-        {% for note in notes%}
+        {% for note in notes %}
           <tr>
             <th scope="row">{{forloop.counter}}</th>
             <td>{{note.select_sub}}</td>
             <td>{{note.module_name}}</td>
             {% if note.pdf_module %}
-            <td><a href="" download="{{note.pdf_module}}">Download</a></td>
+            <td><a href="{{note.pdf_module.url}}" download>Download</a></td>
             {% else %}
             <td>Not Availible</td>
             {% endif %}
