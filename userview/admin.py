@@ -4,7 +4,7 @@ from .models import semFour,semOne,semThree,semTwo,notificationsLive
 
 class adminOrdering(admin.ModelAdmin):
     model = semOne,semTwo,semThree,semFour
-    list_display = ['select_sub', 'module_name']
+    list_display = ['select_sub', 'module_name','pdf_module']
 
     def get_name(self, obj):
         return obj.author.name

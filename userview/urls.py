@@ -12,6 +12,8 @@ urlpatterns = [
     path('semtwo/',views.semtwo_view,name="semtwo"),
     path('semthree/',views.semthree_view,name="semthree"),
     path('semfour/',views.semfour_view,name="semfour"),
-
     path('admincontrol/',views.admin_view,name="adminview"),
+
+    path('profile/',views.profile_view,name="profile"),
+    path('profile/deleteprofile/',views.delete_profile,name="deleteprofile")
 ]

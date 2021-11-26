@@ -1,5 +1,7 @@
 from django.db import models
+from django.db.models.base import Model
 from django.db.models.fields import CharField, DateField
+from django.contrib.auth.models import User
 
 # Create your models here.
 class semOne(models.Model):
@@ -105,4 +107,6 @@ class notificationsLive(models.Model):
 
     def __str__(self):
         return self.title
+
+
 

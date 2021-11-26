@@ -19,6 +19,9 @@
             <ul class="navbar-nav">
               {% if user.is_authenticated %}
               <li class="nav-item">
+                <a class="btn btn-outline-light mx-2" href="{% url 'profile' %}">Profile</a>
+              </li>
+              <li class="nav-item">
                 <a class="btn btn-outline-light mx-2" href="{% url 'logout' %}">Logout</a>
               </li>
               {% else %}
@@ -48,24 +51,6 @@
           {% endif %}
       {% endblock %}
 
-      <div class="container">
-        <div class="card">
-          <div class="card-body">
-            <h3 class="text-center text-danger">Notifications.</h3>
-            <marquee behavior="scroll" direction="down" height="100px" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();" >
-              {% for n in notification %}
-                <center>
-                  <a href="#" 
-                    class="text-center py-2 text-primary"
-                    style="text-decoration: none;font-size:20px;">
-                    {{n}}
-                  </a>
-                </center>
-              {% endfor %}
-            </marquee>
-            
-          </div>
-        </div>
-      </div>
+      
 </body>
 </html>

@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models.expressions import Value
 from django.forms.widgets import ChoiceWidget
 from django.http import request
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -36,12 +37,14 @@ def register_view(request):
         email = request.POST["email"]
         username = request.POST["username"]
         password = request.POST["password"]
+        fname = request.POST["fname"]
+        lname = request.POST["lname"]
 
         if User.objects.filter(username=username).exists():
             messages.info(request, '*Username is already taken')
             return redirect('register')
         else:
-            newuser = User.objects.create_user(username=username,password=password,email=email)
+            newuser = User.objects.create_user(username=username,password=password,email=email,first_name=fname,last_name=lname)
             newuser.save()
             messages.info(request, 'Registerd Successfully please login to Continue')
             return redirect('login')
@@ -128,3 +131,24 @@ def admin_view(request):
             messages.info(request,'Fields Cannot be empty')
         
     return render(request, 'admin/admin.html',context)
+
+@login_required(login_url='/login/')
+def profile_view(request):
+    context = {}
+    context['present_user'] = request.user
+
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        newuser = User.objects.update(first_name=first_name,last_name=last_name)
+        return redirect('profile')
+        
+    return render(request,'profile.html',context)
+
+@login_required(login_url='/login/')
+def delete_profile(request):
+    user = request.user
+    d_user = User.objects.filter(username=user.username)
+    d_user.delete()
+    return redirect('login')
+    
